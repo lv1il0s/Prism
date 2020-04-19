@@ -24,10 +24,5 @@ namespace Prism.DryIoc
         {
             return new DryIocContainerExtension(new Container(CreateContainerRules()));
         }
-
-        protected override void RegisterFrameworkExceptionTypes()
-        {
-            ExceptionExtensions.RegisterFrameworkExceptionType(typeof(ContainerException));
-        }
     }
 }
