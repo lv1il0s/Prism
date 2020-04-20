@@ -33,6 +33,17 @@ namespace HelloWorld
         protected override void OnInitialized()
         {
             InitializeComponent();
+            this.ConfigureDefaultRegionBehaviors(behaviors =>
+            {
+                // Demo purposes only... you could add your own additional behaviors here...
+                //behaviors.AddIfMissing(MyCustomBehavior.BehaviorName, typeof(MyCustomBehavior));
+            });
+
+            this.ConfigureRegionAdapterMappings((mappings, container) =>
+            {
+                // Demo purposes only... you could add aditional Adapter mappings here...
+                // mappings.RegisterMapping(typeof(RefreshView), container.Resolve<MyCustomAdapter>());
+            });
 
             //NavigationService.NavigateAsync("NavigationPage/MyTabbedPage"); //works
             //NavigationService.NavigateAsync("NavigationPage/MyTabbedPage/ViewC"); //works
@@ -66,6 +77,7 @@ namespace HelloWorld
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterRegionServices();
             containerRegistry.RegisterForNavigation<MainPage>();
             //containerRegistry.RegisterForNavigation<MainPage, SomeOtherViewModel>(); //override viewmodel convention
             containerRegistry.RegisterForNavigation<NavigationPage>();
@@ -83,6 +95,7 @@ namespace HelloWorld
             //moduleCatalog.AddModule(new ModuleInfo(typeof(ModuleA.ModuleAModule), "ModuleA", InitializationMode.OnDemand));
             moduleCatalog.AddModule<HelloDialog.HelloDialogModule>(InitializationMode.OnDemand);
             moduleCatalog.AddModule<HelloPageDialog.HelloPageDialogModule>(InitializationMode.OnDemand);
+            moduleCatalog.AddModule<HelloRegions.RegionDemoModule>();
         }
 
         protected override void OnStart ()
