@@ -39,10 +39,11 @@ namespace HelloWorld
                 //behaviors.AddIfMissing(MyCustomBehavior.BehaviorName, typeof(MyCustomBehavior));
             });
 
-            this.ConfigureRegionAdapterMappings((mappings, container) =>
+            this.ConfigureRegionAdapterMappings(mappings =>
             {
                 // Demo purposes only... you could add aditional Adapter mappings here...
-                // mappings.RegisterMapping(typeof(RefreshView), container.Resolve<MyCustomAdapter>());
+
+                // mappings.RegisterMapping<RefreshView, MyCustomAdapter>();
             });
 
             //NavigationService.NavigateAsync("NavigationPage/MyTabbedPage"); //works

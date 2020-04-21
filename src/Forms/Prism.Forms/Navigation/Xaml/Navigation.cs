@@ -10,20 +10,20 @@ namespace Prism.Navigation.Xaml
         internal static readonly BindableProperty NavigationServiceProperty =
             BindableProperty.CreateAttached("NavigationService",
                 typeof(INavigationService),
-                typeof(NavigationExtensionBase),
+                typeof(Navigation),
                 default(INavigationService));
 
         public static readonly BindableProperty CanNavigateProperty =
             BindableProperty.CreateAttached("CanNavigate",
                 typeof(bool),
-                typeof(NavigationExtensionBase),
+                typeof(Navigation),
                 true,
                 propertyChanged: OnCanNavigatePropertyChanged);
         
         internal static readonly BindableProperty RaiseCanExecuteChangedInternalProperty =
             BindableProperty.CreateAttached("RaiseCanExecuteChangedInternal",
                 typeof(Action),
-                typeof(NavigationExtensionBase),
+                typeof(Navigation),
                 default(Action));
 
         public static bool GetCanNavigate(BindableObject view) => (bool) view.GetValue(CanNavigateProperty);
